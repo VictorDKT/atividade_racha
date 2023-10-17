@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Constraint Layout</string>
+    <string name="title">Vamos Rachar!</string>
+    <string name="insert_value">Insira o valor da conta</string>
+    <string name="insert_people_number">Insira a quantidade de pessoa</string>
+    <string name="speak">Falar</string>
+    <string name="money">R$</string>
+    <string name="value">O valor é</string>
 </resources>

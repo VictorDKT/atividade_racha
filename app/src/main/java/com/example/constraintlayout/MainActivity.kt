@@ -19,21 +19,25 @@ class MainActivity : AppCompatActivity() , TextWatcher, TextToSpeech.OnInitListe
     var resultado = "R$ 0.00"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        resultado = "R$ 0.00"
         super.onCreate(savedInstanceState)
+        val moneyString = getString(R.string.money)
+        resultado = "$moneyString 0.00"
         setContentView(R.layout.activity_main)
         val edtConta = findViewById<EditText>(R.id.edtConta)
         edtConta.addTextChangedListener(this)
         val edtPessoas = findViewById<EditText>(R.id.edtPessoas)
         edtPessoas.addTextChangedListener(this)
-        // Initialize TTS engine
+        val textResult = findViewById<TextView>(R.id.ResultView)
+        textResult.text = resultado
+
         tts = TextToSpeech(this, this)
-        //a
+
         val buttonShare = findViewById<FloatingActionButton>(R.id.floatingActionButton)
         buttonShare.setOnClickListener {
             val sendIntent = Intent()
+            val valueString = getString(R.string.value)
             sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "O valor é $resultado.")
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "$valueString $resultado.")
             sendIntent.type = "text/plain"
             sendIntent.setPackage("com.whatsapp")
             startActivity(Intent.createChooser(sendIntent, ""))
@@ -59,9 +63,10 @@ class MainActivity : AppCompatActivity() , TextWatcher, TextToSpeech.OnInitListe
 
         if(numeroDePessoas != 0.00 && conta != 0.00) {
             Log.d ("PDM23", "2")
-            val result = conta / numeroDePessoas
-            resultado = "R$" + df.format(result)
-            textResult.setText("R$" + df.format(result))
+            val result = df.format(conta / numeroDePessoas)
+            val moneyString = getString(R.string.money)
+            resultado = "$moneyString $result"
+            textResult.setText(resultado)
         }
     }
 

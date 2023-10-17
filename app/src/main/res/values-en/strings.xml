@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Constraint Layout</string>
+    <string name="title">Lets Share!</string>
+    <string name="insert_value">Enter the bill amount</string>
+    <string name="insert_people_number">Enter the number of people</string>
+    <string name="speak">Speak</string>
+    <string name="money">US$</string>
+    <string name="value">The value is</string>
+</resources>
